@@ -5,16 +5,16 @@ const Nav = () => {
     return (
         <StyledNav>
             <h1>
-                <a id="logo" href="#">
+                <Link id="logo" to="/">
                     Capture
-                </a>
+                </Link>
             </h1>
             <ul>
                 <li>
                     <Link to="/">1. About Us</Link>
                 </li>
                 <li>
-                    <Link to="/works">2. Our Work</Link>
+                    <Link to="/work">2. Our Work</Link>
                 </li>
                 <li>
                     <Link to="/contact">3. Contact Us</Link>
