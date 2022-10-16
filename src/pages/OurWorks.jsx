@@ -6,9 +6,15 @@ import theracer from "../img/theracer-small.png";
 import goodtimes from "../img/goodtimes-small.png";
 
 import { motion } from "framer-motion";
-import { pageAnimation, fade, photoAnimation, lineAnimation, slider, sliderContainer } from "../animation";
+import { pageAnimation, fade, photoAnimation, lineAnimation, slider, sliderContainer, scrollReveal } from "../animation";
+
+import { UseScroll } from '../components/useScroll';
 
 const OurWorks = () => {
+    const [element, controls] = UseScroll();
+    const [element2, controls2] = UseScroll();
+    const [element3, controls3] = UseScroll();
+    //variants={scrollReveal} ref={element} animate={controls} initial="hidden"
     return (
         <Work variants={pageAnimation} initial="hidden" animate="show" exit="exit" style={{ background: "#fff" }} >
             <motion.div variants={sliderContainer} >
@@ -17,21 +23,21 @@ const OurWorks = () => {
                 <Frame3 variants={slider}></Frame3>
                 <Frame4 variants={slider}></Frame4>
             </motion.div>
-            <Movie>
+            <Movie variants={scrollReveal} ref={element} animate={controls} initial="hidden">
                 <motion.h2 variants={fade}>The Athlete</motion.h2>
                 <motion.div variants={lineAnimation} className="line"></motion.div>
                 <Link to="/work/the-athlete">
                     <Hide><motion.img variants={photoAnimation} src={athlete} alt="athlete" /></Hide>
                 </Link>
             </Movie>
-            <Movie>
+            <Movie variants={scrollReveal} ref={element2} animate={controls2} initial="hidden">
                 <motion.h2 variants={fade}>The Racer</motion.h2>
                 <motion.div variants={lineAnimation} className="line"></motion.div>
                 <Link to="/work/the-racer">
                     <Hide><motion.img variants={photoAnimation} src={theracer} alt="theracer" /></Hide>
                 </Link>
             </Movie>
-            <Movie>
+            <Movie variants={scrollReveal} ref={element3} animate={controls3} initial="hidden">
                 <motion.h2 variants={fade}>Good Times</motion.h2>
                 <motion.div variants={lineAnimation} className="line"></motion.div>
                 <Link to="/work/good-times">
@@ -52,7 +58,7 @@ const Work = styled(motion.div)`
     }
 `;
 
-const Movie = styled.div`
+const Movie = styled(motion.div)`
     padding-bottom: 10rem;
     .line {
         height: 0.5rem;
